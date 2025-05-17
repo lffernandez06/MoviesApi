@@ -1,0 +1,57 @@
+
+
+<section class="mx-5">
+  <search-box (movieByName)="loadmoviesBySeacrh($event)" ></search-box>
+</section>
+
+
+<div class="card mx-5" style="width: 18rem;">
+
+  @if (filterMovieByTitle().length > 0 ) {
+
+
+    @for (item of filterMovieByTitle(); track $index) {
+
+     @if (item.Poster !== 'N/A') {
+        <img [src]="item.Poster" class="card-img-top" alt="poster" />
+      } @else {
+        <img src="/public/image-damge.jpg" class="card-img-top" alt="no poster available" />
+      }
+     <div class="card-body">
+    <h5 class="card-title">{{item.Title}}</h5>
+    <h6>{{item.Year}}</h6>
+    <p class="card-text">{{item.Actors}}</p>
+    <p class="card-text">{{item.Plot}}</p>
+
+    <p class="card-text">{{item.Director}}</p>
+    <hr>
+    <p class="card-text">{{item.Genre}}</p>
+    <p class="card-text">Duracion: {{item.Runtime}}</p>
+    <a href="#" class="btn btn-primary">Ver</a>
+    </div>
+
+      }
+
+  }@else {
+    <img src="/public/image-damge.jpg" class="card-img-top" alt="error" />
+    <h2>No movies found.</h2>
+  }
+
+
+<!--
+
+</div>
+
+<div class="card mx-5" style="width: 18rem;">
+
+  @for (item of showMovieOnScreem(); track $index) {
+
+    <img [src]="item.Poster" class="card-img-top" alt="...">
+  }
+
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> -->
